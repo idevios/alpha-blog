@@ -6,25 +6,6 @@
 		<th>Description</th>
 	</tr>
 
-	<% @articles.each do |article| %>
-	<tr>
-		<td><%= article.title %></td>
-		<td><%= article.description %></td>
-		<td><%= link_to 'Edit', edit_article_path(article) %></td>
-		<td><%= link_to 'Show', article_path(article) %></td>
-		<td>
-			<%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %>
-		</td>
-	</tr>
-	<tr>
-		<td><small>Created By: <%= article.user.username if article.user %></small></td>
-	</tr>
-	<tr>
-		<td><small>Created at: <%= time_ago_in_words(article.created_at) %> ago</small></td>
-	</tr>
-	<tr>
-		<td><small>Last updated at: <%= time_ago_in_words(article.updated_at) %> ago</small></td>
-	</tr>
-	<% end %>
+	<%= render 'article', obj: @articles %>
 
 </table>
